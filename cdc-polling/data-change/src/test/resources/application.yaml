@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+    ddl-auto: create
+  sql:
+    init:
+      mode: always
