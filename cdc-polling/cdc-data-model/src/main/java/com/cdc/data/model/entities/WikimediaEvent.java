@@ -23,7 +23,7 @@ public class WikimediaEvent {
     private String titleUrl;
     @Column(name = "event_time", nullable = false)
     private String eventTime;
-    @Column(name = "\"user\"", nullable = false)
+    @Column(name = "user_name", nullable = false)
     private String user;
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
