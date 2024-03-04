@@ -28,5 +28,5 @@ logging:
   level:
 #    org.hibernate.SQL: DEBUG
 #    org.hibernate.type: TRACE
-    com.cdc.polling: DEBUG
+    com.cdc: DEBUG
 

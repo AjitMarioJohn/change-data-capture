@@ -1,4 +1,4 @@
-package com.cdc.polling.data.model.entities;
+package com.cdc.data.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

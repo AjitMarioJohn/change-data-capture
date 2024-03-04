@@ -1,8 +1,7 @@
-package com.cdc.polling.data.change.controllers;
+package com.cdc.data.change.controllers;
 
-import com.cdc.polling.data.change.services.WikimediaService;
-import com.cdc.polling.data.model.entities.WikimediaEvent;
-import com.cdc.polling.data.model.repositories.WikimediaEventRepository;
+import com.cdc.data.change.services.WikimediaService;
+import com.cdc.data.model.repositories.WikimediaEventRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

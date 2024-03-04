@@ -8,8 +8,8 @@
 		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cdc.polling</groupId>
-	<artifactId>cdc-polling</artifactId>
+	<groupId>com.cdc</groupId>
+	<artifactId>cdc-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>cdc-polling</name>
@@ -66,13 +66,13 @@
 		<dependencies>
 
 			<dependency>
-				<groupId>com.cdc.polling.commons</groupId>
+				<groupId>com.cdc.commons</groupId>
 				<artifactId>cdc-commons</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.cdc.polling.data.model</groupId>
+				<groupId>com.cdc.data.model</groupId>
 				<artifactId>cdc-data-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>

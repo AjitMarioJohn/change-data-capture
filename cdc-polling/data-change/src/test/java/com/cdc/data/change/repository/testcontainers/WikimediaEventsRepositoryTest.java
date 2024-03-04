@@ -1,16 +1,13 @@
-package com.cdc.polling.data.change.repository.testcontainers;
+package com.cdc.data.change.repository.testcontainers;
 
-import com.cdc.polling.data.model.entities.WikimediaEvent;
-import com.cdc.polling.data.model.repositories.WikimediaEventRepository;
+import com.cdc.data.model.entities.WikimediaEvent;
+import com.cdc.data.model.repositories.WikimediaEventRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.EnabledIf;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;

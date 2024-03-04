@@ -1,4 +1,4 @@
-package com.cdc.polling.data.model.constants;
+package com.cdc.data.model.constants;
 
 import lombok.experimental.UtilityClass;
 

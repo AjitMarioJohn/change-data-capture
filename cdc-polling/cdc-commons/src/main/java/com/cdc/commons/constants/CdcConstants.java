@@ -1,5 +1,5 @@
-package com.cdc.polling.commons.constants;
+package com.cdc.commons.constants;
 
-public class DataPollingConstants {
+public class CdcConstants {
     public static final String WIKIMEDIA_URL = "https://stream.wikimedia.org/v2/stream/recentchange/";
 }

@@ -1,4 +1,4 @@
-package com.cdc.polling.data.change;
+package com.cdc.data.change;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,11 +10,11 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableWebFlux
 @SpringBootApplication
 @ComponentScan(basePackages = {
-        "com.cdc.polling.data.change",
-        "com.cdc.polling.data.model"
+        "com.cdc.data.change",
+        "com.cdc.data.model"
 })
-@EntityScan(basePackages = "com.cdc.polling.data.model.entities")
-@EnableJpaRepositories(basePackages = {"com.cdc.polling.data.model.repositories"})
+@EntityScan(basePackages = "com.cdc.data.model.entities")
+@EnableJpaRepositories(basePackages = {"com.cdc.data.model.repositories"})
 public class DataChangeApplication {
     public static void main(String[] args) {
         SpringApplication.run(DataChangeApplication.class, args);

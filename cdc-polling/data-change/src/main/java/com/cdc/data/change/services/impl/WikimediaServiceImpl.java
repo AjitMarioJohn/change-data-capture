@@ -1,23 +1,18 @@
-package com.cdc.polling.data.change.services.impl;
+package com.cdc.data.change.services.impl;
 
-import com.cdc.polling.commons.constants.DataPollingConstants;
-import com.cdc.polling.data.model.dtos.WikimediaEventDTO;
-import com.cdc.polling.data.change.services.WikimediaService;
-import com.cdc.polling.data.model.entities.WikimediaEvent;
-import com.cdc.polling.data.model.mapper.WikimediaEventMapper;
-import com.cdc.polling.data.model.repositories.WikimediaEventRepository;
+import com.cdc.commons.constants.CdcConstants;
+import com.cdc.data.change.services.WikimediaService;
+import com.cdc.data.model.dtos.WikimediaEventDTO;
+import com.cdc.data.model.entities.WikimediaEvent;
+import com.cdc.data.model.mapper.WikimediaEventMapper;
+import com.cdc.data.model.repositories.WikimediaEventRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -30,7 +25,7 @@ public class WikimediaServiceImpl implements WikimediaService {
 
     public WikimediaServiceImpl(WikimediaEventMapper wikimediaEventMapper, WikimediaEventRepository wikimediaEventRepository) {
         this.wikimediaEventRepository = wikimediaEventRepository;
-        this.webClient = WebClient.create(DataPollingConstants.WIKIMEDIA_URL);
+        this.webClient = WebClient.create(CdcConstants.WIKIMEDIA_URL);
         this.mapper = wikimediaEventMapper;
     }
 
@@ -52,8 +47,8 @@ public class WikimediaServiceImpl implements WikimediaService {
 
     @Override
     public void stopStreaming() {
-        if (!subscription.isDisposed()) {
-            log.info("Subscription not disposed. Going to dispose");
+        if (Objects.nonNull(subscription) && !subscription.isDisposed()) {
+            log.info("Going to dispose the subscription");
             subscription.dispose();
         }
     }

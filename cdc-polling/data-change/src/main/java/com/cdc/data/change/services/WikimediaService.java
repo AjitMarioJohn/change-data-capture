@@ -1,4 +1,4 @@
-package com.cdc.polling.data.change.services;
+package com.cdc.data.change.services;
 
 public interface WikimediaService {
     void startStreaming();

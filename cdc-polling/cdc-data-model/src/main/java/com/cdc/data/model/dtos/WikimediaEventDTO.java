@@ -1,4 +1,4 @@
-package com.cdc.polling.data.model.dtos;
+package com.cdc.data.model.dtos;
 
 import lombok.Data;
 

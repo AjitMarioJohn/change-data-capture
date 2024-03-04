@@ -44,10 +44,10 @@
     <changeSet id="2" author="liquibase">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="h_wikimedia_events" />
+                <tableExists tableName="wikimedia_events_audit" />
             </not>
         </preConditions>
-        <createTable tableName="h_wikimedia_events">
+        <createTable tableName="wikimedia_events_audit">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true"  primaryKeyName="pk_h_wikimedia_events"/>
             </column>
@@ -72,13 +72,68 @@
             <column name="operation" type="varchar(20)">
                 <constraints nullable="false" />
             </column>
-            <column name="partition_key" type="varchar(20)">
+            <column name="partition_key" type="varchar(50)">
+            </column>
+            <column name="retry_counts" type="bigint" defaultValue="0">
                 <constraints nullable="false" />
             </column>
         </createTable>
         <rollback>
-            <dropTable tableName="h_wikimedia_events"/>
+            <dropTable tableName="wikimedia_events_audit"/>
         </rollback>
     </changeSet>
+
+    <changeSet id="3" author="liquibase">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="scheduler_instances" />
+            </not>
+        </preConditions>
+        <createTable tableName="scheduler_instances">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"  primaryKeyName="pk_scheduler_instances"/>
+            </column>
+            <column name="instance_id" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retry_attempts" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="scheduler_instances"/>
+        </rollback>
+    </changeSet>
+
+<!--    <changeSet id="4"  author="liquibase">-->
+<!--        <sql>-->
+<!--            CREATE TRIGGER wikimedia_events_audit_trigger-->
+<!--            AFTER INSERT OR UPDATE OR DELETE ON wikimedia_events-->
+<!--            FOR EACH ROW-->
+<!--            BEGIN-->
+<!--            INSERT INTO history_table (operation, changed_data, changed_by, changed_date)-->
+<!--            VALUES (CASE WHEN INSERTING THEN 'INSERT'-->
+<!--            WHEN UPDATING THEN 'UPDATE'-->
+<!--            WHEN DELETING THEN 'DELETE'-->
+<!--            ELSE NULL END,-->
+<!--            CASE WHEN INSERTING THEN :new.my_column-->
+<!--            WHEN UPDATING THEN :old.my_column || ' -> ' || :new.my_column-->
+<!--            WHEN DELETING THEN :old.my_column-->
+<!--            ELSE NULL END,-->
+<!--            USER,-->
+<!--            SYSDATE);-->
+<!--            END;-->
+<!--            /-->
+<!--        </sql>-->
+<!--        <rollback>-->
+<!--            DROP TRIGGER wikimedia_events_audit_trigger ON wikimedia_events;-->
+<!--        </rollback>-->
+<!--    </changeSet>-->
 
 </databaseChangeLog>
