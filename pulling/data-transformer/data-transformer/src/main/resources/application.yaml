@@ -1,0 +1,38 @@
+spring.application.name: data-transformer
+#server:
+#  port: 8585
+
+spring:
+  datasource:
+    username: cdc_local
+    password: cdc_local
+    url: jdbc:postgresql://localhost:5432/capture-data-change?schema=public;
+#  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        ddl-auto: update
+#        format_sql: true
+#        use_sql_comments: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, liquibase
+
+
+logging:
+  level:
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type: TRACE
+    com.cdc: DEBUG
+    org.springframework.web: DEBUG
+
+cdc:
+  endpoint:
+    id-retriever:
+      host: http://localhost:8484
+      uri: /id/allotment/
+
+
